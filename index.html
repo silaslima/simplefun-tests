@@ -1,0 +1,1286 @@
+	<!DOCTYPE html>
+	<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Mythic Variations II</title>
+
+		
+		<style>
+			input[type="text"], textarea, select {
+			background-color : lightblue;
+			/*background-color : #e8a87c;*/ 
+			}
+
+			#rounded_table2 {
+				background-color: Khaki;
+				border: 2px solid #73AD21;
+				border-radius: 25px;
+				padding: 20px; 
+				width: 250;
+				height: 100px;
+				position: absolute;
+				left: 755px;
+				top: 675px;
+			}
+
+			
+			#rounded_table1 {
+				background-color: Khaki;
+				border: 2px solid #73AD21;
+				border-radius: 25px;
+				padding: 20px; 
+				width: 250;
+				height: 200px;
+				position: absolute;
+				left: 400px;
+				top: 675px;
+			}
+			
+			#rounded_theme {
+				background-color: Khaki;
+				border: 2px solid #73AD21;
+				border-radius: 25px;
+				padding: 20px; 
+				width: 250;
+				height: 200px;
+				position: absolute;
+				left: 50px;
+				top: 675px;
+			}
+			
+			#rounded_disposition {
+				background-color: Khaki;
+				border: 2px solid #73AD21;
+				border-radius: 25px;
+				padding: 20px; 
+				width: 250;
+				height: 200px;
+				position: absolute;
+				left: 750px;
+				top: 400px;
+			}
+			
+			#rounded_descriptors {
+				background-color: Khaki;
+				border: 2px solid #73AD21;
+				border-radius: 25px;
+				padding: 20px; 
+				width: 300px;
+				height: 200px;
+				position: absolute;
+				left: 400px;
+				top: 400px;
+			}
+			
+			
+			#rounded_eventcheck {
+				background-color: aquamarine ;
+				border: 2px solid #73AD21;
+				border-radius: 25px;
+				padding: 20px; 
+				width: 300px;
+				height: 200px;
+				position: absolute;
+				left: 50px;
+				top: 400px;
+			}
+			
+			
+			#rounded_detailcheck {
+				background-color: aquamarine ;
+				border: 2px solid #73AD21;
+				border-radius: 25px;
+				padding: 20px; 
+				width: 300px;
+				height: 180px;
+				position: absolute;
+				left: 900px;
+				top: 145px;
+			}
+			
+			#rounded_fatecheck {
+				background-color: aquamarine;
+				border: 2px solid #73AD21;
+				border-radius: 25px;
+				padding: 20px; 
+				width: 300px;
+				height: 180px;
+				position: absolute;
+				left: 550px;
+				top: 145px;
+			}
+			
+			#rounded_scenesetup {
+				background-color: aquamarine;
+				border: 2px solid #73AD21;
+				border-radius: 25px;
+				padding: 20px; 
+				width: 200px;
+				height: 180px;
+				position: absolute;
+				left: 300px;
+				top: 145px;
+			}
+			#current_chaos {
+				background-color: aquamarine;
+				border: 2px solid #73AD21;
+				border-radius: 25px;
+				padding: 20px; 
+				width: 200px;
+				height: 180px;
+				position: absolute;
+				left: 50px;
+				top: 145px;			
+			}
+			
+		</style>
+		
+		
+		
+		<script>
+
+			if (typeof(Storage) == "undefined") {
+				alert("Darn! Your browser cant store data (it doesnt use html5)");
+			}
+		
+			
+			var DetailCheckTable = new Object();
+			DetailCheckTable[1]= "ANGER"
+			DetailCheckTable[2]= "ANGER"
+			DetailCheckTable[3]= "ANGER"
+			DetailCheckTable[4]= "ANGER"
+			DetailCheckTable[5]= "SADNESS"
+			DetailCheckTable[6]= "FEAR"
+			DetailCheckTable[7]= "DISFAVORS THREAD"
+			DetailCheckTable[8]= "DISFAVORS PC"
+			DetailCheckTable[9]= "FOCUS NPC"
+			DetailCheckTable[10]= "FAVORS NPC"
+			DetailCheckTable[11]= "FOCUS PC"
+			DetailCheckTable[12]= "DISFAVORS NPC"
+			DetailCheckTable[13]= "FOCUS THREAD"
+			DetailCheckTable[14]= "FAVORS PC"
+			DetailCheckTable[15]= "FAVOR THREAD"
+			DetailCheckTable[16]= "COURAGE"
+			DetailCheckTable[17]= "HAPPINESS"
+			DetailCheckTable[18]= "CALM"
+			DetailCheckTable[19]= "CALM"
+			DetailCheckTable[20]= "CALM"
+		
+			var Descriptor1 = new Object();
+			Descriptor1[1]="Abnormally"
+			Descriptor1[2]="Adventurously"
+			Descriptor1[3]="Aggressively"
+			Descriptor1[4]="Angrily"
+			Descriptor1[5]="Anxiously"
+			Descriptor1[6]="Awkwardly"
+			Descriptor1[7]="Beautifully"
+			Descriptor1[8]="Bleakly"
+			Descriptor1[9]="Boldly"
+			Descriptor1[10]="Bravely"
+			Descriptor1[11]="Busily"
+			Descriptor1[12]="Calmly"
+			Descriptor1[13]="Carefully"
+			Descriptor1[14]="Carelessly"
+			Descriptor1[15]="Cautiously"
+			Descriptor1[16]="Ceaselessly"
+			Descriptor1[17]="Cheerfully"
+			Descriptor1[18]="Combatively"
+			Descriptor1[19]="Coolly"
+			Descriptor1[20]="Crazily"
+			Descriptor1[21]="Curiously"
+			Descriptor1[22]="Daintily"
+			Descriptor1[23]="Dangerously"
+			Descriptor1[24]="Defiantly"
+			Descriptor1[25]="Deliberately"
+			Descriptor1[26]="Delightfully"
+			Descriptor1[27]="Dimly"
+			Descriptor1[28]="Efficiently"
+			Descriptor1[29]="Energetically"
+			Descriptor1[30]="Enormously"
+			Descriptor1[31]="Enthusiastically"
+			Descriptor1[32]="Excitedly"
+			Descriptor1[33]="Fearfully"
+			Descriptor1[34]="Ferociously"
+			Descriptor1[35]="Fiercely"
+			Descriptor1[36]="Foolishly"
+			Descriptor1[37]="Fortunately"
+			Descriptor1[38]="Frantically"
+			Descriptor1[39]="Freely"
+			Descriptor1[40]="Frighteningly"
+			Descriptor1[41]="Fully"
+			Descriptor1[42]="Generously"
+			Descriptor1[43]="Gently"
+			Descriptor1[44]="Gladly"
+			Descriptor1[45]="Gracefully"
+			Descriptor1[46]="Gratefully"
+			Descriptor1[47]="Happily"
+			Descriptor1[48]="Hastily"
+			Descriptor1[49]="Healthily"
+			Descriptor1[50]="Helpfully"
+			Descriptor1[51]="Helplessly"
+			Descriptor1[52]="Hopelessly"
+			Descriptor1[53]="Innocently"
+			Descriptor1[54]="Intensely"
+			Descriptor1[55]="Interestingly"
+			Descriptor1[56]="Irritatingly"
+			Descriptor1[57]="Jovially"
+			Descriptor1[58]="Joyfully"
+			Descriptor1[59]="Judgementally"
+			Descriptor1[60]="Kindly"
+			Descriptor1[61]="Kookily"
+			Descriptor1[62]="Lazily"
+			Descriptor1[63]="Lightly"
+			Descriptor1[64]="Loosely"
+			Descriptor1[65]="Loudly"
+			Descriptor1[66]="Lovingly"
+			Descriptor1[67]="Loyally"
+			Descriptor1[68]="Majestically"
+			Descriptor1[69]="Meaningfully"
+			Descriptor1[70]="Mechanically"
+			Descriptor1[71]="Miserably"
+			Descriptor1[72]="Mockingly"
+			Descriptor1[73]="Mysteriously"
+			Descriptor1[74]="Naturally"
+			Descriptor1[75]="Neatly"
+			Descriptor1[76]="Nicely"
+			Descriptor1[77]="Oddly"
+			Descriptor1[78]="Offensively"
+			Descriptor1[79]="Officially"
+			Descriptor1[80]="Partially"
+			Descriptor1[81]="Peacefully"
+			Descriptor1[82]="Perfectly"
+			Descriptor1[83]="Playfully"
+			Descriptor1[84]="Politely"
+			Descriptor1[85]="Positively"
+			Descriptor1[86]="Powerfully"
+			Descriptor1[87]="Quaintly"
+			Descriptor1[88]="Quarrelsomely"
+			Descriptor1[89]="Quietly"
+			Descriptor1[90]="Roughly"
+			Descriptor1[91]="Rudely"
+			Descriptor1[92]="Ruthlessly"
+			Descriptor1[93]="Slowly"
+			Descriptor1[94]="Softly"
+			Descriptor1[95]="Swiftly"
+			Descriptor1[96]="Threateningly"
+			Descriptor1[97]="Very"
+			Descriptor1[98]="Violently"
+			Descriptor1[99]="Wildly"
+			Descriptor1[100]="Yieldingly"
+		
+			var Descriptor2 = new Object();
+			Descriptor2[1]="Abandoned"
+			Descriptor2[2]="Abnormal"
+			Descriptor2[3]="Amusing"
+			Descriptor2[4]="Ancient"
+			Descriptor2[5]="Aromatic"
+			Descriptor2[6]="Average"
+			Descriptor2[7]="Beautiful"
+			Descriptor2[8]="Bizarre"
+			Descriptor2[9]="Classy"
+			Descriptor2[10]="Clean"
+			Descriptor2[11]="Cold"
+			Descriptor2[12]="Colorful"
+			Descriptor2[13]="Creepy"
+			Descriptor2[14]="Cute"
+			Descriptor2[15]="Damaged"
+			Descriptor2[16]="Dark"
+			Descriptor2[17]="Defeated"
+			Descriptor2[18]="Delicate"
+			Descriptor2[19]="Delightful"
+			Descriptor2[20]="Dirty"
+			Descriptor2[21]="Disagreeable"
+			Descriptor2[22]="Disgusting"
+			Descriptor2[23]="Drab"
+			Descriptor2[24]="Dry"
+			Descriptor2[25]="Dull"
+			Descriptor2[26]="Empty"
+			Descriptor2[27]="Enormous"
+			Descriptor2[28]="Exotic"
+			Descriptor2[29]="Faded"
+			Descriptor2[30]="Familiar"
+			Descriptor2[31]="Fancy"
+			Descriptor2[32]="Fat"
+			Descriptor2[33]="Feeble"
+			Descriptor2[34]="Feminine"
+			Descriptor2[35]="Festive"
+			Descriptor2[36]="Flawless"
+			Descriptor2[37]="Fresh"
+			Descriptor2[38]="Full"
+			Descriptor2[39]="Glorious"
+			Descriptor2[40]="Good"
+			Descriptor2[41]="Graceful"
+			Descriptor2[42]="Hard"
+			Descriptor2[43]="Harsh"
+			Descriptor2[44]="Healthy"
+			Descriptor2[45]="Heavy"
+			Descriptor2[46]="Historical"
+			Descriptor2[47]="Horrible"
+			Descriptor2[48]="Important"
+			Descriptor2[49]="Interesting"
+			Descriptor2[50]="Juvenile"
+			Descriptor2[51]="Lacking"
+			Descriptor2[52]="Lame"
+			Descriptor2[53]="Large"
+			Descriptor2[54]="Lavish"
+			Descriptor2[55]="Lean"
+			Descriptor2[56]="Less"
+			Descriptor2[57]="Lethal"
+			Descriptor2[58]="Lonely"
+			Descriptor2[59]="Lovely"
+			Descriptor2[60]="Macabre"
+			Descriptor2[61]="Magnificent"
+			Descriptor2[62]="Masculine"
+			Descriptor2[63]="Mature"
+			Descriptor2[64]="Messy"
+			Descriptor2[65]="Mighty"
+			Descriptor2[66]="Military"
+			Descriptor2[67]="Modern"
+			Descriptor2[68]="Extravagant"
+			Descriptor2[69]="Mundane"
+			Descriptor2[70]="Mysterious"
+			Descriptor2[71]="Natural"
+			Descriptor2[72]="Nondescript"
+			Descriptor2[73]="Odd"
+			Descriptor2[74]="Pale"
+			Descriptor2[75]="Petite"
+			Descriptor2[76]="Poor"
+			Descriptor2[77]="Powerful"
+			Descriptor2[78]="Quaint"
+			Descriptor2[79]="Rare"
+			Descriptor2[80]="Reassuring"
+			Descriptor2[81]="Remarkable"
+			Descriptor2[82]="Rotten"
+			Descriptor2[83]="Rough"
+			Descriptor2[84]="Ruined"
+			Descriptor2[85]="Rustic"
+			Descriptor2[86]="Scary"
+			Descriptor2[87]="Simple"
+			Descriptor2[88]="Small"
+			Descriptor2[89]="Smelly"
+			Descriptor2[90]="Smooth"
+			Descriptor2[91]="Soft"
+			Descriptor2[92]="Strong"
+			Descriptor2[93]="Tranquil"
+			Descriptor2[94]="Ugly"
+			Descriptor2[95]="Valuable"
+			Descriptor2[96]="Warlike"
+			Descriptor2[97]="Warm"
+			Descriptor2[98]="Watery"
+			Descriptor2[99]="Weak"
+			Descriptor2[100]="Young"
+		
+			var Action1 = new Object();
+			Action1[1]="Attainment"
+			Action1[2]="Starting"
+			Action1[3]="Neglect"
+			Action1[4]="Fight"
+			Action1[5]="Recruit"
+			Action1[6]="Triumph"
+			Action1[7]="Violate"
+			Action1[8]="Oppose"
+			Action1[9]="Malice"
+			Action1[10]="Communicate"
+			Action1[11]="Persecute"
+			Action1[12]="Increase"
+			Action1[13]="Decrease"
+			Action1[14]="Abandon"
+			Action1[15]="Gratify"
+			Action1[16]="Inquire"
+			Action1[17]="Antagonize"
+			Action1[18]="Move"
+			Action1[19]="Waste"
+			Action1[20]="Truce"
+			Action1[21]="Release"
+			Action1[22]="Befriend"
+			Action1[23]="Judge"
+			Action1[24]="Desert"
+			Action1[25]="Dominate"
+			Action1[26]="Procrastinate"
+			Action1[27]="Praise"
+			Action1[28]="Separate"
+			Action1[29]="Take"
+			Action1[30]="Break"
+			Action1[31]="Heal"
+			Action1[32]="Delay"
+			Action1[33]="Stop"
+			Action1[34]="Lie"
+			Action1[35]="Return"
+			Action1[36]="Imitate"
+			Action1[37]="Struggle"
+			Action1[38]="Inform"
+			Action1[39]="Bestow"
+			Action1[40]="Postpone"
+			Action1[41]="Expose"
+			Action1[42]="Haggle"
+			Action1[43]="Imprison"
+			Action1[44]="Release"
+			Action1[45]="Celebrate"
+			Action1[46]="Develop"
+			Action1[47]="Travel"
+			Action1[48]="Block"
+			Action1[49]="Harm"
+			Action1[50]="Debase"
+			Action1[51]="Overindulge"
+			Action1[52]="Adjourn"
+			Action1[53]="Adversity"
+			Action1[54]="Kill"
+			Action1[55]="Disrupt"
+			Action1[56]="Usurp"
+			Action1[57]="Create"
+			Action1[58]="Betray"
+			Action1[59]="Agree"
+			Action1[60]="Abuse"
+			Action1[61]="Oppress"
+			Action1[62]="Inspect"
+			Action1[63]="Ambush"
+			Action1[64]="Spy"
+			Action1[65]="Attach"
+			Action1[66]="Carry"
+			Action1[67]="Open"
+			Action1[68]="Carelessness"
+			Action1[69]="Ruin"
+			Action1[70]="Extravagance"
+			Action1[71]="Trick"
+			Action1[72]="Arrive"
+			Action1[73]="Propose"
+			Action1[74]="Divide"
+			Action1[75]="Refuse"
+			Action1[76]="Mistrust"
+			Action1[77]="Deceive"
+			Action1[78]="Cruelty"
+			Action1[79]="Intolerance"
+			Action1[80]="Trust"
+			Action1[81]="Excitement"
+			Action1[82]="Activity"
+			Action1[83]="Assist"
+			Action1[84]="Care"
+			Action1[85]="Negligence"
+			Action1[86]="Passion"
+			Action1[87]="Work"
+			Action1[88]="Control"
+			Action1[89]="Attract"
+			Action1[90]="Failure"
+			Action1[91]="Pursue"
+			Action1[92]="Vengeance"
+			Action1[93]="Proceedings"
+			Action1[94]="Dispute"
+			Action1[95]="Punish"
+			Action1[96]="Guide"
+			Action1[97]="Transform"
+			Action1[98]="Overthrow"
+			Action1[99]="Oppress"
+			Action1[100]="Change"		
+		
+			var Action2 = new Object();
+			Action2[1]="Goals"
+			Action2[2]="Dreams"
+			Action2[3]="Environment"
+			Action2[4]="Outside"
+			Action2[5]="Inside"
+			Action2[6]="Reality"
+			Action2[7]="Allies"
+			Action2[8]="Enemies"
+			Action2[9]="Evil"
+			Action2[10]="Good"
+			Action2[11]="Emotions"
+			Action2[12]="Opposition"
+			Action2[13]="War"
+			Action2[14]="Peace"
+			Action2[15]="Innocent"
+			Action2[16]="Love"
+			Action2[17]="Spirit"
+			Action2[18]="Intellect"
+			Action2[19]="Ideas"
+			Action2[20]="Joy"
+			Action2[21]="Messages"
+			Action2[22]="Energy"
+			Action2[23]="Balance"
+			Action2[24]="Tension"
+			Action2[25]="Friendship"
+			Action2[26]="Physical"
+			Action2[27]="Project"
+			Action2[28]="Pleasures"
+			Action2[29]="Pain"
+			Action2[30]="Possessions"
+			Action2[31]="Benefits"
+			Action2[32]="Plans"
+			Action2[33]="Lies"
+			Action2[34]="Expectations"
+			Action2[35]="Legal"
+			Action2[36]="Bureaucracy"
+			Action2[37]="Business"
+			Action2[38]="Path"
+			Action2[39]="News"
+			Action2[40]="Exterior"
+			Action2[41]="Advice"
+			Action2[42]="Plot"
+			Action2[43]="Competition"
+			Action2[44]="Prison"
+			Action2[45]="Illness"
+			Action2[46]="Food"
+			Action2[47]="Attention"
+			Action2[48]="Success"
+			Action2[49]="Failure"
+			Action2[50]="Travel"
+			Action2[51]="Jealousy"
+			Action2[52]="Dispute"
+			Action2[53]="Home"
+			Action2[54]="Investment"
+			Action2[55]="Suffering"
+			Action2[56]="Wishes"
+			Action2[57]="Tactics"
+			Action2[58]="Stalemate"
+			Action2[59]="Randomness"
+			Action2[60]="Misfortune"
+			Action2[61]="Death"
+			Action2[62]="Disruption"
+			Action2[63]="Power"
+			Action2[64]="Burden"
+			Action2[65]="Intrigues"
+			Action2[66]="Fears"
+			Action2[67]="Ambush"
+			Action2[68]="Rumor"
+			Action2[69]="Wounds"
+			Action2[70]="Extravagance"
+			Action2[71]="Representative"
+			Action2[72]="Adversities"
+			Action2[73]="Opulence"
+			Action2[74]="Liberty"
+			Action2[75]="Military"
+			Action2[76]="Mundane"
+			Action2[77]="Trials"
+			Action2[78]="Masses"
+			Action2[79]="Vehicle"
+			Action2[80]="Art"
+			Action2[81]="Victory"
+			Action2[82]="Dispute"
+			Action2[83]="Riches"
+			Action2[84]="Normal"
+			Action2[85]="Technology"
+			Action2[86]="Hope"
+			Action2[87]="Magic"
+			Action2[88]="Illusions"
+			Action2[89]="Portals"
+			Action2[90]="Danger"
+			Action2[91]="Weapons"
+			Action2[92]="Animals"
+			Action2[93]="Weather"
+			Action2[94]="Elements"
+			Action2[95]="Nature"
+			Action2[96]="Masses"
+			Action2[97]="Leadership"
+			Action2[98]="Fame"
+			Action2[99]="Anger"
+			Action2[100]="Information"
+			
+			var Focus = new Object();
+			Focus[1]="REMOTE EVENT"
+			Focus[2]="REMOTE EVENT"
+			Focus[3]="REMOTE EVENT"
+			Focus[4]="REMOTE EVENT"
+			Focus[5]="REMOTE EVENT"
+			Focus[6]="REMOTE EVENT"
+			Focus[7]="REMOTE EVENT"
+			Focus[8]="NPC ACTION"
+			Focus[9]="NPC ACTION"
+			Focus[10]="NPC ACTION"
+			Focus[11]="NPC ACTION"
+			Focus[12]="NPC ACTION"
+			Focus[13]="NPC ACTION"
+			Focus[14]="NPC ACTION"
+			Focus[15]="NPC ACTION"
+			Focus[16]="NPC ACTION"
+			Focus[17]="NPC ACTION"
+			Focus[18]="NPC ACTION"
+			Focus[19]="NPC ACTION"
+			Focus[20]="NPC ACTION"
+			Focus[21]="NPC ACTION"
+			Focus[22]="NPC ACTION"
+			Focus[23]="NPC ACTION"
+			Focus[24]="NPC ACTION"
+			Focus[25]="NPC ACTION"
+			Focus[26]="NPC ACTION"
+			Focus[27]="NPC ACTION"
+			Focus[28]="NPC ACTION"
+			Focus[29]="INTRODUCE A NEW NPC"
+			Focus[30]="INTRODUCE A NEW NPC"
+			Focus[31]="INTRODUCE A NEW NPC"
+			Focus[32]="INTRODUCE A NEW NPC"
+			Focus[33]="INTRODUCE A NEW NPC"
+			Focus[34]="INTRODUCE A NEW NPC"
+			Focus[35]="INTRODUCE A NEW NPC"
+			Focus[36]="MOVE TOWARD A THREAD"
+			Focus[37]="MOVE TOWARD A THREAD"
+			Focus[38]="MOVE TOWARD A THREAD"
+			Focus[39]="MOVE TOWARD A THREAD"
+			Focus[40]="MOVE TOWARD A THREAD"
+			Focus[41]="MOVE TOWARD A THREAD"
+			Focus[42]="MOVE TOWARD A THREAD"
+			Focus[43]="MOVE TOWARD A THREAD"
+			Focus[44]="MOVE TOWARD A THREAD"
+			Focus[45]="MOVE TOWARD A THREAD"
+			Focus[46]="MOVE AWAY FROM A THREAD"
+			Focus[47]="MOVE AWAY FROM A THREAD"
+			Focus[48]="MOVE AWAY FROM A THREAD"
+			Focus[49]="MOVE AWAY FROM A THREAD"
+			Focus[50]="MOVE AWAY FROM A THREAD"
+			Focus[51]="MOVE AWAY FROM A THREAD"
+			Focus[52]="MOVE AWAY FROM A THREAD"
+			Focus[53]="CLOSE A THREAD"
+			Focus[54]="CLOSE A THREAD"
+			Focus[55]="CLOSE A THREAD"
+			Focus[56]="PC NEGATIVE"
+			Focus[57]="PC NEGATIVE"
+			Focus[58]="PC NEGATIVE"
+			Focus[59]="PC NEGATIVE"
+			Focus[60]="PC NEGATIVE"
+			Focus[61]="PC NEGATIVE"
+			Focus[62]="PC NEGATIVE"
+			Focus[63]="PC NEGATIVE"
+			Focus[64]="PC NEGATIVE"
+			Focus[65]="PC NEGATIVE"
+			Focus[66]="PC NEGATIVE"
+			Focus[67]="PC NEGATIVE"
+			Focus[68]="PC POSITIVE"
+			Focus[69]="PC POSITIVE"
+			Focus[70]="PC POSITIVE"
+			Focus[71]="PC POSITIVE"
+			Focus[72]="PC POSITIVE"
+			Focus[73]="PC POSITIVE"
+			Focus[74]="PC POSITIVE"
+			Focus[75]="PC POSITIVE"
+			Focus[76]="AMBIGUOUS EVENT"
+			Focus[77]="AMBIGUOUS EVENT"
+			Focus[78]="AMBIGUOUS EVENT"
+			Focus[79]="AMBIGUOUS EVENT"
+			Focus[80]="AMBIGUOUS EVENT"
+			Focus[81]="AMBIGUOUS EVENT"
+			Focus[82]="AMBIGUOUS EVENT"
+			Focus[83]="AMBIGUOUS EVENT"
+			Focus[84]="NPC NEGATIVE"
+			Focus[85]="NPC NEGATIVE"
+			Focus[86]="NPC NEGATIVE"
+			Focus[87]="NPC NEGATIVE"
+			Focus[88]="NPC NEGATIVE"
+			Focus[89]="NPC NEGATIVE"
+			Focus[90]="NPC NEGATIVE"
+			Focus[91]="NPC NEGATIVE"
+			Focus[92]="NPC NEGATIVE"
+			Focus[93]="NPC POSITIVE"
+			Focus[94]="NPC POSITIVE"
+			Focus[95]="NPC POSITIVE"
+			Focus[96]="NPC POSITIVE"
+			Focus[97]="NPC POSITIVE"
+			Focus[98]="NPC POSITIVE"
+			Focus[99]="NPC POSITIVE"
+			Focus[100]="NPC POSITIVE"
+
+			var Disposition = new Object();
+			Disposition[1]="PASSIVE (-2): The Character takes the softest approach to their Actions."
+			Disposition[2]="PASSIVE (-2): The Character takes the softest approach to their Actions."
+			Disposition[3]="PASSIVE (-2): The Character takes the softest approach to their Actions."
+			Disposition[4]="PASSIVE (-2): The Character takes the softest approach to their Actions."
+			Disposition[5]="PASSIVE (-2): The Character takes the softest approach to their Actions."
+			Disposition[6]="MODERATE (0): The Character acts in a moderate fashion, not too intense, not too passive."
+			Disposition[7]="MODERATE (0): The Character acts in a moderate fashion, not too intense, not too passive."
+			Disposition[8]="MODERATE (0): The Character acts in a moderate fashion, not too intense, not too passive."
+			Disposition[9]="MODERATE (0): The Character acts in a moderate fashion, not too intense, not too passive."
+			Disposition[10]="MODERATE (0): The Character acts in a moderate fashion, not too intense, not too passive."
+			Disposition[11]="ACTIVE (+2): The Character wants to make their Actions known."
+			Disposition[12]="ACTIVE (+2): The Character wants to make their Actions known."
+			Disposition[13]="ACTIVE (+2): The Character wants to make their Actions known."
+			Disposition[14]="ACTIVE (+2): The Character wants to make their Actions known."
+			Disposition[15]="ACTIVE (+2): The Character wants to make their Actions known."
+			Disposition[16]="AGGRESSIVE (+4): The Character acts with the utmost urgency and intensity."
+			Disposition[17]="AGGRESSIVE (+4): The Character acts with the utmost urgency and intensity."
+			Disposition[18]="AGGRESSIVE (+4): The Character acts with the utmost urgency and intensity."
+			Disposition[19]="AGGRESSIVE (+4): The Character acts with the utmost urgency and intensity."
+			Disposition[20]="AGGRESSIVE (+4): The Character acts with the utmost urgency and intensity."		
+
+			
+			
+			var NPCAction1 = new Object();
+			
+			NPCAction1[1]="THEME ACTION: The NPC takes an Action in keeping with the current Theme, Disposition, and Activated Descriptors. If the NPC was already performing an Action, he NPC stops that Action and switches to another, expected Action."
+			NPCAction1[2]="THEME ACTION: The NPC takes an Action in keeping with the current Theme, Disposition, and Activated Descriptors. If the NPC was already performing an Action, the NPC stops that Action and switches to another, expected Action."
+			NPCAction1[3]="THEME ACTION: The NPC takes an Action in keeping with the current Theme, Disposition, and Activated Descriptors. If the NPC was already performing an Action, the NPC stops that Action and switches to another, expected Action."
+			NPCAction1[4]="NPC CONTINUES: The NPC will continue their current Action, or take it to the next level, whichever makes the most sense. If the NPC has not acted yet in this Scene, then treat the result as a Theme Action." 
+			NPCAction1[5]="NPC CONTINUES: The NPC will continue their current Action, or take it to the next level, whichever makes the most sense. If the NPC has not acted yet in this Scene, then treat the result as a Theme Action."
+			NPCAction1[6]="NPC CONTINUES +2: The NPC will continue their current Action, or take it to the next level, whichever makes the most sense. Apply a +2 adjustment to their Disposition Score, representing a possible shift in their current attitude. If the NPC has not acted yet in this Scene, then treat the result as a Theme Action +2."
+			NPCAction1[7]="NPC CONTINUES -2: The NPC will continue their current Action, or take it to the next level, whichever makes the most sense. Apply a -2 adjustment to their Disposition Score, representing a possible shift in their current attitude. If the NPC has not acted yet in this Scene, then treat the result as a Theme Action -2."
+			NPCAction1[8]="NPC ACTION: The NPC takes a new, maybe unexpected, Action determined by rolling on NPC Action Table 2 and applying the Disposition Modifier (if any) to that roll."
+			NPCAction1[9]="NPC ACTION -4: The NPC takes a new, maybe unexpected, Action determined by rolling on NPC Action Table 2, applying a -4 modifier and the Disposition Modifier (if any) to that roll."
+			NPCAction1[10]="NPC ACTION +4: The NPC takes a new, maybe unexpected, Action determined by rolling on NPC Action Table 2, applying a +4 modifier and the Disposition Modifier (if any) to that roll."
+			
+			var NPCAction2 = new Object();
+			NPCAction2[1] = "TALKS, EXPOSITION"
+			NPCAction2[2] = "TALKS, EXPOSITION"
+			NPCAction2[3] = "TALKS, EXPOSITION"
+			NPCAction2[4] = "TALKS, EXPOSITION"
+			NPCAction2[5] = "TALKS, EXPOSITION"
+			NPCAction2[6] = "TALKS, EXPOSITION"
+			NPCAction2[7] = "PERFORMS AN AMBIGUOUS ACTION"
+			NPCAction2[8] = "PERFORMS AN AMBIGUOUS ACTION"
+			NPCAction2[9] = "ACTS OUT OF PC INTEREST"
+			NPCAction2[10] = "ACTS OUT OF PC INTEREST"
+			NPCAction2[11] = "GIVES SOMETHING"
+			NPCAction2[12] = "SEEKS TO END THE ENCOUNTER"
+			NPCAction2[13] = "CHANGES THE THEME"
+			NPCAction2[14] = "CHANGES DESCRIPTOR"
+			NPCAction2[15] = "ACTS OUT OF SELF INTEREST"
+			NPCAction2[16] = "ACTS OUT OF SELF INTEREST"
+			NPCAction2[17] = "ACTS OUT OF SELF INTEREST"
+			NPCAction2[18] = "TAKES SOMETHING"
+			NPCAction2[19] = "CAUSES HARM"
+			NPCAction2[20] = "CAUSES HARM"
+			
+			function fnStart(){
+			
+				document.getElementById("ChaosForm").elements["Chaos"].value = localStorage.Chaos;
+				if (localStorage.Identity){document.getElementById("IdentityForm").elements["Identity"].value = localStorage.Identity;}
+				if (localStorage.Theme){document.getElementById("ThemeForm").elements["Theme"].value = localStorage.Theme;}
+				
+			}
+			
+			function isEven(num) {
+				return num % 2 === 0;
+			}
+		
+			function fnChaos(){
+				
+				if (document.getElementById("ChaosForm").elements["Chaos"].value >= 3 &&
+					document.getElementById("ChaosForm").elements["Chaos"].value <=6){
+					}
+				else{alert("only values between 3 and 6 are allowed"); return;}
+				
+				if (document.getElementById("ChaosForm").elements["Chaos"].value != localStorage.Chaos){
+					localStorage.setItem("Chaos", document.getElementById("ChaosForm").elements["Chaos"].value);
+				}
+				
+				if (localStorage.Chaos == (3))
+				{document.getElementById("FateCheckForm").elements["FavUnfav"].value = "FAVORABLE"}
+				
+				if (localStorage.Chaos == (4) || localStorage.Chaos == (5))
+				{
+					document.getElementById("FateCheckForm").elements["FavUnfav"].value = " ";
+					document.getElementById("FateCheckForm").elements["FavUnfavNumber"].selectedIndex = "1";						
+				}
+				
+				if (localStorage.Chaos == (6))
+				{document.getElementById("FateCheckForm").elements["FavUnfav"].value = "UNFAVORABLE"};
+				
+			}
+		
+			function getRandomArbitrary(min, max) {
+				//min inclusive, max exclusive
+				return Math.floor(Math.random() * (max - min) + min);
+			}
+
+		
+		
+			function SceneSetupJS(){
+				var sides10=10;
+				var randomNumber1 = getRandomArbitrary(1, 9);
+				var halfChaos =  Math.ceil(localStorage.Chaos/2);
+				//alert("rolled: " + randomNumber1 + "\n" + "halfChaos: " + halfChaos);
+				
+				if  (randomNumber1 > localStorage.Chaos){
+					document.getElementById("SceneSetupForm").elements["SceneSetup"].value = "Normal Scene";
+				}
+				else if (randomNumber1<=halfChaos){
+					document.getElementById("SceneSetupForm").elements["SceneSetup"].value = "Altered Scene";
+				}
+				else{
+					document.getElementById("SceneSetupForm").elements["SceneSetup"].value = "Interrupted Scene";
+				}
+			
+			}
+		
+			function FateCheckJS(){
+				sides10=10;
+				var randomNumber1 = Math.floor(Math.random() * this.sides10) + 1;
+				var randomNumber2 = Math.floor(Math.random() * this.sides10) + 1;
+				var chaosRoll = Math.floor(Math.random() * this.sides10) + 1;
+				var totFateCheck = randomNumber1 + randomNumber2;
+				//document.getElementById("FateCheckForm").elements["1d10_1"].value = (randomNumber1);
+				//document.getElementById("FateCheckForm").elements["1d10_2"].value = (randomNumber2);
+				var varChaos = document.getElementById("ChaosForm").elements["Chaos"].value;
+				//alert(varChaos);
+				
+				if (varChaos == (3))
+				{document.getElementById("FateCheckForm").elements["FavUnfav"].value = "FAVORABLE"}
+				
+				if (varChaos == (4) || varChaos == (5))
+				{
+					document.getElementById("FateCheckForm").elements["FavUnfav"].value = " ";
+					document.getElementById("FateCheckForm").elements["FavUnfavNumber"].selectedIndex = "1";						
+				}
+				
+				if (varChaos == (6))
+				{document.getElementById("FateCheckForm").elements["FavUnfav"].value = "UNFAVORABLE"};
+
+				totFateCheck += parseInt(document.getElementById("FateCheckForm").elements["FateCheckMods"].value);
+				totFateCheck += parseInt(document.getElementById("FateCheckForm").elements["FavUnfavNumber"].value);
+				//document.getElementById("FateCheckForm").elements["dTot"].value = totFateCheck;
+				
+				//document.getElementById("FateCheckForm").elements["chaosDie"].value=chaosRoll;
+				
+				var currentChaos = document.getElementById("ChaosForm").elements["Chaos"].value; 
+				
+				if (chaosRoll <= currentChaos){
+					  if ((randomNumber1 != randomNumber2)&& (!isEven(randomNumber1)) && (!isEven(randomNumber2))){
+						if (totFateCheck >= 11){
+							document.getElementById("FateCheckForm").elements["finalResult"].value = "Exceptional Yes!"
+						}
+						else{
+							document.getElementById("FateCheckForm").elements["finalResult"].value = "Exceptional No!"
+						}
+					  }
+					  else if ((randomNumber1 != randomNumber2) && (isEven(randomNumber1)) && (isEven(randomNumber2))){
+						if (totFateCheck >= 11){
+							document.getElementById("FateCheckForm").elements["finalResult"].value = "Common Yes + Random Event!"
+						}
+						else{
+							document.getElementById("FateCheckForm").elements["finalResult"].value = "Common No + Random Event!"
+						}	
+					  }
+
+					  else if (randomNumber1 == randomNumber2){
+						if (totFateCheck >= 11){
+							//alert("aqui")
+							document.getElementById("FateCheckForm").elements["finalResult"].value = "Exceptional Yes + Random Event!"
+						}
+						else{
+							//alert("depois")
+							document.getElementById("FateCheckForm").elements["finalResult"].value = "Exceptional No + Random Event!"
+						}	
+					  }
+					  else{
+						if (totFateCheck >= 11){
+							document.getElementById("FateCheckForm").elements["finalResult"].value = "Common Yes!"
+						}
+						else{
+							document.getElementById("FateCheckForm").elements["finalResult"].value = "Common No!"
+						}	
+					  }
+				}
+				else
+				{
+					if (totFateCheck >= 11){
+							document.getElementById("FateCheckForm").elements["finalResult"].value = "Common Yes!"
+						}
+					else{
+							document.getElementById("FateCheckForm").elements["finalResult"].value = "Common No!"
+						}	
+				}
+				
+				
+				
+			}
+			
+				
+			
+			
+			function DetailCheckJS(){
+			
+				//alert(DetailCheckTable[2]);
+				var ChaosMod;
+				var varChaos = document.getElementById("ChaosForm").elements["Chaos"].value;
+				if  (varChaos == 3){
+					ChaosMod = "2"
+				}
+				else if (varChaos == 6){
+					var ChaosMod = "-2"
+				}
+				else{
+					var ChaosMod = "0"
+				}
+
+				sides10=10;
+				var randomNumber1 = Math.floor(Math.random() * this.sides10) + 1;
+				var randomNumber2 = Math.floor(Math.random() * this.sides10) + 1;
+				var totDetailCheck = randomNumber1 + randomNumber2 + parseInt(ChaosMod);
+				if (totDetailCheck<1){totDetailCheck=1;}
+				if (totDetailCheck>20){totDetailCheck=20;}
+				document.getElementById("DetailCheckForm").elements["DCTres"].value = DetailCheckTable[totDetailCheck];
+				
+				randomNumber1 = Math.floor(Math.random() * this.sides10) + 1;
+				randomNumber2 = Math.floor(Math.random() * this.sides10) + 1;
+				var totDetailCheckD1 = randomNumber1 + randomNumber2;
+				var varDesc1 = Descriptor1[totDetailCheckD1];
+							
+				randomNumber1 = Math.floor(Math.random() * this.sides10) + 1;
+				randomNumber2 = Math.floor(Math.random() * this.sides10) + 1;
+				var totDetailCheckD2 = randomNumber1 + randomNumber2;
+				var varDesc2 = Descriptor2[totDetailCheckD2];
+				
+				document.getElementById("DetailCheckForm").elements["DescTables"].value = varDesc1 + " " + varDesc2;
+
+				randomNumber1 = Math.floor(Math.random() * this.sides10) + 1;
+				randomNumber2 = Math.floor(Math.random() * this.sides10) + 1;
+				var totDetailCheckA1 = randomNumber1 + randomNumber2;
+				var varAction1 = Action1[totDetailCheckA1];
+				
+				randomNumber1 = Math.floor(Math.random() * this.sides10) + 1;
+				randomNumber2 = Math.floor(Math.random() * this.sides10) + 1;
+				var totDetailCheckA2 = randomNumber1 + randomNumber2;
+				var varAction2 = Action2[totDetailCheckA2];
+				
+				document.getElementById("DetailCheckForm").elements["ActTables"].value = varAction1 + " " + varAction2;
+			}
+
+			function EventCheckJS(){
+				
+				var sides100=100;
+				sides10=10;
+				
+				var indFocus = Math.floor(Math.random() * sides100) + 1;
+				document.getElementById("EventCheckForm").elements["FocusTable"].value = Focus[indFocus];
+			
+				var randomNumber1 = Math.floor(Math.random() * this.sides10) + 1;
+				var randomNumber2 = Math.floor(Math.random() * this.sides10) + 1;
+				var totEventCheckD1 = randomNumber1 + randomNumber2;
+				var varDesc1 = Descriptor1[totEventCheckD1];
+							
+				randomNumber1 = Math.floor(Math.random() * this.sides10) + 1;
+				randomNumber2 = Math.floor(Math.random() * this.sides10) + 1;
+				var totEventCheckD2 = randomNumber1 + randomNumber2;
+				var varDesc2 = Descriptor2[totEventCheckD2];
+				
+				document.getElementById("EventCheckForm").elements["DescTables"].value = varDesc1 + " " + varDesc2;
+
+				randomNumber1 = Math.floor(Math.random() * this.sides10) + 1;
+				randomNumber2 = Math.floor(Math.random() * this.sides10) + 1;
+				var totEventCheckA1 = randomNumber1 + randomNumber2;
+				var varAction1 = Action1[totEventCheckA1];
+				
+				randomNumber1 = Math.floor(Math.random() * this.sides10) + 1;
+				randomNumber2 = Math.floor(Math.random() * this.sides10) + 1;
+				var totEventCheckA2 = randomNumber1 + randomNumber2;
+				var varAction2 = Action2[totEventCheckA2];
+				
+				document.getElementById("EventCheckForm").elements["ActTables"].value = varAction1 + " " + varAction2;
+			}
+			
+			function BehaviorCheckJS(){
+				
+				sides10=10;
+				
+				/**************** descriptors */
+				var randomNumber1 = Math.floor(Math.random() * this.sides10) + 1;
+				var randomNumber2 = Math.floor(Math.random() * this.sides10) + 1;
+				var totBehaviorCheckD1 = randomNumber1 + randomNumber2;
+				var varDesc1 = Descriptor1[totBehaviorCheckD1];
+							
+				randomNumber1 = Math.floor(Math.random() * this.sides10) + 1;
+				randomNumber2 = Math.floor(Math.random() * this.sides10) + 1;
+				var totBehaviorCheckD2 = randomNumber1 + randomNumber2;
+				var varDesc2 = Descriptor2[totBehaviorCheckD2];
+				
+				document.getElementById("BehaviorCheckForm").elements["DescTables"].value = varDesc1 + " " + varDesc2;
+			
+		 
+				/****************** actions */
+				randomNumber1 = Math.floor(Math.random() * this.sides10) + 1;
+				randomNumber2 = Math.floor(Math.random() * this.sides10) + 1;
+				var totBehaviorCheckA1 = randomNumber1 + randomNumber2;
+				var varAction1 = Action1[totBehaviorCheckA1];
+				
+				randomNumber1 = Math.floor(Math.random() * this.sides10) + 1;
+				randomNumber2 = Math.floor(Math.random() * this.sides10) + 1;
+				var totBehaviorCheckA2 = randomNumber1 + randomNumber2;
+				var varAction2 = Action2[totBehaviorCheckA2];
+				
+				document.getElementById("BehaviorCheckForm").elements["ActTables"].value = varAction1 + " " + varAction2;
+				
+				/****************** actions */
+				
+				randomNumber1 = Math.floor(Math.random() * this.sides10) + 1;
+				randomNumber2 = Math.floor(Math.random() * this.sides10) + 1;
+				var intDispModifiers = parseInt(document.getElementById("BehaviorCheckForm").elements["DispModifiers"].value)
+				var totBehaviorCheckDisp = randomNumber1 + randomNumber2 + intDispModifiers;
+				//alert(totBehaviorCheckDisp);
+				//document.write("randomNumber1: "+randomNumber1 + " randomNumber2: " + randomNumber2 + " intDispModifiers:" + intDispModifiers);
+				var varAction3 = Disposition[totBehaviorCheckDisp];
+							
+				document.getElementById("BehaviorCheckForm").elements["Disposition"].value = varAction3;
+				
+		
+			}
+			
+			function IdentityJS(){
+				localStorage.Identity = document.getElementById("IdentityForm").elements["Identity"].value;
+				
+			}
+			
+			function PersonalityJS() {
+				
+				sides10=10;
+				
+				/**************** descriptors */
+				var randomNumber1 = Math.floor(Math.random() * this.sides10) + 1;
+				var randomNumber2 = Math.floor(Math.random() * this.sides10) + 1;
+				var totBehaviorCheckD1 = randomNumber1 + randomNumber2;
+				var varDesc1 = Descriptor1[totBehaviorCheckD1];
+							
+				randomNumber1 = Math.floor(Math.random() * this.sides10) + 1;
+				randomNumber2 = Math.floor(Math.random() * this.sides10) + 1;
+				var totBehaviorCheckD2 = randomNumber1 + randomNumber2;
+				var varDesc2 = Descriptor2[totBehaviorCheckD2];
+				
+				document.getElementById("PersonalityForm").elements["DescTables"].value = varDesc1 + " " + varDesc2;
+				localStorage.Personality = varDesc1 + " " + varDesc2;
+			
+			}
+			
+			function ActivityJS(){
+				sides10=10;
+
+				randomNumber1 = Math.floor(Math.random() * this.sides10) + 1;
+				randomNumber2 = Math.floor(Math.random() * this.sides10) + 1;
+				var totBehaviorCheckA1 = randomNumber1 + randomNumber2;
+				var varAction1 = Action1[totBehaviorCheckA1];
+				
+				randomNumber1 = Math.floor(Math.random() * this.sides10) + 1;
+				randomNumber2 = Math.floor(Math.random() * this.sides10) + 1;
+				var totBehaviorCheckA2 = randomNumber1 + randomNumber2;
+				var varAction2 = Action2[totBehaviorCheckA2];
+				
+				document.getElementById("ActivityForm").elements["ActTables"].value = varAction1 + " " + varAction2;
+
+				
+			}
+			
+			function DispositionJS(){
+				
+				sides10=10;
+				
+				randomNumber1 = Math.floor(Math.random() * this.sides10) + 1;
+				randomNumber2 = Math.floor(Math.random() * this.sides10) + 1;
+				var intDispModifiers = parseInt(document.getElementById("DispModifiersForm").elements["DispModifiers"].value)
+				var totBehaviorCheckDisp = randomNumber1 + randomNumber2 + intDispModifiers;
+				//alert(totBehaviorCheckDisp);
+				//document.write("randomNumber1: "+randomNumber1 + " randomNumber2: " + randomNumber2 + " intDispModifiers:" + intDispModifiers);
+				var varAction3 = Disposition[totBehaviorCheckDisp];
+							
+				document.getElementById("DispositionForm").elements["Disposition"].value = varAction3;
+			
+			}
+			
+			function ThemeJS(){
+				localStorage.Theme = document.getElementById("ThemeForm").elements["Theme"].value;
+			
+			}
+			
+			function ActionTable1JS(){
+				
+				var sides10=10;
+				randomNumber1 = Math.floor(Math.random() * sides10) + 1;
+				var varActionTable1 = NPCAction1[randomNumber1];
+				document.getElementById("ActionTable1Form").elements["ActionTable1"].value = varActionTable1;	
+			
+			}
+
+			function ActionTable2JS(){
+				
+				var sides20=20;
+				var randomNumber2 = Math.floor(Math.random() * sides20) + 1;
+				var varActionTable2 = NPCAction2[randomNumber2];
+				document.getElementById("ActionTable2Form").elements["ActionTable2"].value = varActionTable2;	
+			
+			}
+			
+			
+		</script>
+
+	</head>
+
+	<body onload="fnStart()" bgcolor="#85DCB" background="hexagons.png">
+
+	<h2>Mythic Variations II</h2>
+		Understand that in order of comprehending this tool results you need to read Mythic Variantions II
+	<br><br><br><br>
+	<div id="current_chaos">
+	<h3>Current Chaos</h3>
+	<form id="ChaosForm" action="javascript:fnChaos()">
+	  CHAOS:<br>
+	  <input type="text" name="Chaos">
+	  <input type="submit" value="Click to Update">
+	  </form> Chaos variation is from 3 to 6
+	</div>
+	  
+	<div id="rounded_scenesetup">  
+	  
+	<h3>Scene Setup</h3>
+	<form id="SceneSetupForm" action="javascript:SceneSetupJS()">
+	  Scene Setup result:<br>
+	  <input type="text" name="SceneSetup">
+	  <input type="submit" value="Roll Scene Setup">
+	  </form>
+	</div>  
+	  
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>  
+
+	<div id="rounded_fatecheck">
+	<h3>Fate Check</h3>
+	<form id="FateCheckForm" action="javascript:FateCheckJS()">
+
+	  Fate Check Modifiers:<br>
+	  <select name="FateCheckMods">
+	  <option value="0">50/50 OR UNSURE None</option>
+	  <option value="2">LIKELY 2</option> 
+	  <option value="-2">UNLIKELY -2</option>
+	  <option value="4">VERY LIKELY 4</option>
+	  <option value="-4">VERY UNLIKELY -4</option>
+	  <option value="6">SURE THING 6</option>
+	  <option value="-6">NO WAY -6</option>
+	  <option value="8">HAS TO BE 8</option>
+	  <option value="-8">IMPOSSIBLE -8</option>
+	  </select> 
+	  <br>
+	  
+	  FAVORABLE/UNFAVORABLE:<br>
+	  <input type="text" name="FavUnfav" value="" size="35">
+
+	  <select name="FavUnfavNumber">
+	  <option value="-2">-2</option>
+	  <option value="0" selected>none</option>  
+	  <option value="2">2</option>
+	  </select>
+	  <br>
+	  
+	  Final Result:<br>
+	  <input type="text" name="finalResult" value="" size="35"><input type="submit" value="Submit">
+	</form>
+	</div> 
+
+	<br><br>
+
+	<div id="rounded_detailcheck">
+	<h3>Detail Check</h3>
+	<form id="DetailCheckForm" action="javascript:DetailCheckJS()">
+	  Detail Check Table result:<br>
+	  <input type="text" name="DCTres" value="" size="35">
+	  <br>
+	  
+	  Meaning Tables(Descriptors):<br>
+	  <input type="text" name="DescTables" value="" size="35">
+	  <br>
+	  
+	   Meaning Tables(Actions):<br>
+	  <input type="text" name="ActTables" value="" size="35"><input type="submit" value="Submit">
+	</form> 
+	</div>
+
+	<br>
+	<div id="rounded_eventcheck">
+	<h3>Event Check</h3>
+
+	<form id="EventCheckForm" action="javascript:EventCheckJS()">
+
+	  Focus:<br>
+	  <input type="text" name="FocusTable" value="" size="35">
+	  <br>
+	  Meaning Tables(Descriptors):<br>
+	  <input type="text" name="DescTables" value="" size="35">
+	  <br>
+	  Meaning Tables(Actions):<br>
+	  <input type="text" name="ActTables" value="" size="35"><input type="submit" value="Submit">
+	</form>
+	</div>
+
+
+
+	<div id="rounded_descriptors">
+	<h3>Behavior Check: Descriptors</h3>
+	<form id="IdentityForm" action="javascript:IdentityJS()">
+	  <b>Behaviour Check: IDENTITY</b>:<br>
+	  <input type="text" name="Identity" value="" size="30">
+		<input type="submit" value="fill in">
+	</form> 
+	 
+	<form id="PersonalityForm" action="javascript:PersonalityJS()">  
+	  <b>Behaviour Check: PERSONALITY</b><br>
+	  <input type="text" name="DescTables" value="" size="30">
+		<input type="submit" value="Submit">
+	</form>  
+	 
+	<form id="ActivityForm" action="javascript:ActivityJS()">  
+	  <b>Behaviour Check: ACTIVITY</b><br>
+	  <input type="text" name="ActTables" value="" size="30">
+		<input type="submit" value="Submit">
+	</form>
+	</div>
+
+	<div id="rounded_disposition">  
+	<form id="DispositionForm" action="javascript:DispositionJS()">  
+	  <b>Behaviour Check: Disposition</b><br>
+	  <textarea type="textarea"
+		   cols="70" 
+		   rows="5" 
+		   style="width:350px; height:80px;" 
+		   name="Disposition" 
+		   id="Disposition" 
+		   value="" 
+		   wrap="hard" />
+		</textarea>
+	  <input type="submit" value="Submit">
+	</form> 
+	<form id="DispModifiersForm" action="javascript:DispModifiersJS()">  
+	  <b>Behaviour Check: Disposition modifiers</b>
+	  <br>
+	   <input type="text" name="DispModifiers" value="0"><input type="submit" value="click to update">
+	</form>   
+	</div>
+
+	<div id="rounded_theme">
+	<form id="ThemeForm" action="javascript:ThemeJS()">    
+	  <b>Behaviour Check: Theme</b><br>
+	<textarea type="textarea"
+		   cols="80" 
+		   rows="8" 
+		   style="width:295px; height:150px;" 
+		   name="Theme" 
+		   id="Theme" 
+		   value="" 
+		   wrap="hard" />
+	</textarea>
+	 <br> <input type="submit" value="Fill in">
+	</form>
+	</div>
+	  
+	 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<div id="rounded_table1">
+	<form id="ActionTable1Form" action="javascript:ActionTable1JS()">    
+	  <b>Behaviour Check: NPC Action Table 1</b><br>
+
+	<textarea type="textarea"
+		   cols="80" 
+		   rows="10" 
+		   style="width:300px; height:150px;" 
+		   name="ActionTable1" 
+		   id="ActionTable1" 
+		   value="" 
+		   wrap="hard" />
+	</textarea>
+
+
+	 <br> <input type="submit" value="Submit">
+	</form>  
+	</div>
+
+	<br>
+
+	<div id="rounded_table2">
+	<form id="ActionTable2Form" action="javascript:ActionTable2JS()">    
+	  <b>Behaviour Check: NPC Action Table 2</b><br>
+	<input type="text" name="ActionTable2" value="" size="35">
+	<input type="submit" value="Submit">
+	</form>  
+	</div>
+
+	</body>
+	</html>
